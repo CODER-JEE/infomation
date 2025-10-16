@@ -244,35 +244,7 @@
       modal.classList.add('hidden');
     }
     
-    // 复制账号到剪贴板 + 关闭弹窗
-    function copyToClipboard(accountId, modalId) {
-      // 获取账号文本
-      const accountText = document.getElementById(accountId).textContent;
-      // 获取关闭按钮（用于临时修改文字提示）
-      const closeBtn = event.currentTarget;
-      const originalText = closeBtn.textContent;
-      
-      // 复制到剪贴板
-      navigator.clipboard.writeText(accountText).then(() => {
-        // 临时修改按钮文字提示
-        closeBtn.textContent = '账号已复制';
-        closeBtn.disabled = true;
-  
-        // 0.5秒后恢复按钮状态并关闭弹窗
-        setTimeout(() => {
-          closeBtn.textContent = originalText;
-          closeBtn.disabled = false;
-          closeModal(modalId);
-        }, 600);
-      }).catch(err => {
-        console.error('复制失败:', err);
-        // 复制失败仍关闭弹窗
-        closeModal(modalId);
-      });
-    }
-    
-    // 点击弹窗外部关闭
-    document.querySelectorAll('[id$="Modal"]').forEach(modal => {
+    // 点击弹窗外部关闭 document.querySelectorAll('[id$="Modal"]').forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal(modal.id);
       });
