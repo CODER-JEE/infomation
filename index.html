@@ -244,7 +244,8 @@
       modal.classList.add('hidden');
     }
     
-    // 点击弹窗外部关闭 document.querySelectorAll('[id$="Modal"]').forEach(modal => {
+    // 点击弹窗外部关闭 
+    document.querySelectorAll('[id$="Modal"]').forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal(modal.id);
       });
